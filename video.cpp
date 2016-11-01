@@ -195,9 +195,9 @@ int main(int argc, char* argv[])
 	//create slider bars for HSV filtering
 	createTrackbars();
 	//video capture object to acquire webcam feed
-	VideoCapture capture;
+	VideoCapture capture("rtsp://172.16.254.170:8554/");
 	//open capture object at location zero (default location for webcam)
-	capture.open(0);
+	// capture.open("rtsp://172.16.254.170:8554/");
 	//set height and width of capture frame
 	capture.set(CV_CAP_PROP_FRAME_WIDTH, FRAME_WIDTH);
 	capture.set(CV_CAP_PROP_FRAME_HEIGHT, FRAME_HEIGHT);
@@ -207,7 +207,7 @@ int main(int argc, char* argv[])
 
 
 
-	while (1) {
+	while (capture.isOpened()) {
 
 
 		//store image to matrix
